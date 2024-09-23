@@ -11,7 +11,7 @@ HEADERS = {
     'Accept-Language': 'en-US, en;q=0.5'
 }
 
-# Function to fetch product details
+# Function product details
 def fetch_product_details(link):
     new_webpage = requests.get(link, headers=HEADERS)
     if new_webpage.status_code == 200:
@@ -34,8 +34,8 @@ def fetch_product_details(link):
 # List to hold product data
 product_data = []
 
-# Loop through multiple pages
-for page in range(1, 2):  # Change the range to the number of pages you want to scrape
+# Loop multiple pages
+for page in range(1, 12):  # Change the range to the number of pages you want to scrape
     url = base_url.format(page)
     webpage = requests.get(url, headers=HEADERS)
     
@@ -50,14 +50,13 @@ for page in range(1, 2):  # Change the range to the number of pages you want to 
             if product_details:
                 product_data.append(product_details)  # Add product details to the list
                 
-            time.sleep(1)  # หน่วงเวลาหนึ่งวินาทีก่อนการร้องขอต่อไป
+            time.sleep(1)  # หนึ่งวินาทีก่อนการร้องขอต่อไป
     else:
         print(f"Failed to retrieve page {page}")
     
     time.sleep(2)  # หน่วงเวลาเพิ่มเติมหลังจากแต่ละหน้า
 
-# Convert the list to DataFrame
+
 df = pd.DataFrame(product_data)
 
-# Save DataFrame to CSV
 df.to_csv("amazon_data_Full.csv", header=True, index=False)

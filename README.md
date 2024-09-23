@@ -27,3 +27,5 @@ pip install bs4
 ```shell script
 pip install requests
 ```
+## Important Considerations ⚠️
+Scraping data from websites should be done carefully to avoid violating the site's terms of service. For instance, adding delays between requests can help prevent being blocked by the website.

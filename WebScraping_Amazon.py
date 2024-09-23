@@ -1,6 +1,3 @@
-#pip install bs4
-#pip install requests
-
 from bs4 import BeautifulSoup
 import requests
 import pandas as pd
@@ -38,16 +35,16 @@ new_soup = BeautifulSoup(new_webpage.content, "html.parser")
 #print(f"new_soup : \n{new_soup}") all html
 
 title = new_soup.find("span", attrs={"id":'productTitle'}).text.strip()
-print(title)
+print(f"title : {title}")
 
 price =  new_soup.find("span", attrs={"class":'a-price'}).find("span", attrs={"class": "a-offscreen"}).text.strip()
-print(price)
+print(f"price : {price}")
 
-'''reviews = new_soup.find("span", attrs={"class":'a-icon-alt'}).text
-print(reviews)
+price2 =  new_soup.find("span", attrs={"class":'a-offscreen'}).text.strip()
+print(f"price2 : {price2}")
+
+reviews = new_soup.find("span", attrs={"class":'a-icon-alt'}).text
+print(f"reviews : {reviews}")
 
 ratings = new_soup.find("span", attrs={"id":'acrCustomerReviewText'}).text
-print(ratings)'''
-
-'''x = new_soup.find("span", attrs={"class":'a-price a-text-normal aok-align-center reinventPriceAccordionT2'}).find("span", attrs={"class": "a-offscreen"}).text.strip()
-print(x)'''
+print(f"ratings : {ratings}")
